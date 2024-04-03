@@ -13,7 +13,7 @@ monthly_change = []
 months = []
 
 # Open the CSV using the UTF-8 encoding
-with open(csvpath) as csvfile:
+with open(csvpath, encoding='UTF-8') as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=",")
      # Read the header row first
