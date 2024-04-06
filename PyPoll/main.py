@@ -66,3 +66,23 @@ for x in range (len(candidate_names)):
 print("-----------------------------")
 print(f"Winner: {winner}")
 print("-----------------------------")
+
+
+# Specify the file to write to
+output_path = os.path.join("Analysis", "Results.txt")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w') as resultfile:
+
+    # Write results
+    resultfile.writelines("Election Results \n")
+    resultfile.writelines("----------------------------- \n")
+    resultfile.writelines(f"Total Votes: {total_votes} \n")
+    resultfile.writelines("----------------------------- \n")
+
+    for x in range (len(candidate_names)):
+        resultfile.writelines(f"{candidate_names[x]}: {percents_of_votes[x]}% ({numbers_of_votes[x]}) \n")
+
+    resultfile.writelines("----------------------------- \n")
+    resultfile.writelines(f"Winner: {winner} \n")
+    resultfile.writelines("----------------------------- \n")

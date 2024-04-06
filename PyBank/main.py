@@ -53,24 +53,26 @@ greatest_increase_month = total_month[monthly_change.index(greatest_increase) + 
 greatest_decrease_month = total_month[monthly_change.index(greatest_decrease) + 1]
 
 # Print the results
+
+print ("Financial Analysis")
+print ("-----------------------------")
 print ("Total Months: " + str(len(total_month)))
 print ("Total: $" + str(profit_losses))
-print ("Average Change: $" + str(round(int(average(monthly_change)),2)))
+print ("Average Change: $" + str(round(average(monthly_change),2)))
 print (f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase})")
 print (f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease})")
 
 # Specify the file to write to
-output_path = os.path.join("Analysis", "Results.csv")
+output_path = os.path.join("Analysis", "Results.txt")
 
 # Open the file using "write" mode. Specify the variable to hold the contents
-with open(output_path, 'w', newline='') as resultfile:
+with open(output_path, 'w') as resultfile:
 
-    # Initialise csv.writer
-    csvwriter = csv.writer(resultfile)
-
-    # Write the first row (column headers)
-    csvwriter.writerow(['Total Month', 'Total', 'Average Change', 'Greatest Increase in Profits','Greatest Decrease in Profits'])
-
-    # Write the second row
-    csvwriter.writerow([len(total_month), '$' +str(profit_losses) , greatest_increase_month + ' ' + '$' + str(greatest_increase), greatest_decrease_month + ' ' + '$' + str(greatest_decrease)])
- 
+    # Write the results
+    resultfile.writelines("Financial Analysis \n")
+    resultfile.writelines("-------------------------- \n")
+    resultfile.writelines(f"Total Month: {len(total_month)} \n")
+    resultfile.writelines (f"Total: $ {profit_losses} \n")
+    resultfile.writelines (f"Average Change: $ {round(average(monthly_change),2)} \n")
+    resultfile.writelines (f"Greatest Increase in Profits: {greatest_increase_month} (${greatest_increase}) \n")
+    resultfile.writelines (f"Greatest Decrease in Profits: {greatest_decrease_month} (${greatest_decrease}) \n")
